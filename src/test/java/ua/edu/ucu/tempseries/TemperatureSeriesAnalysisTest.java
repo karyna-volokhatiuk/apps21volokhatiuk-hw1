@@ -372,4 +372,27 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(8, seriesAnalysis.getCapacity());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testsummaryStatistics() {
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // expect exception here
+        seriesAnalysis.summaryStatistics;
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testsummaryStatistics() {
+        double[] temperatureSeries = {1.0, 5.0, 7.3, -6.8, -3.8};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // expect exception here
+        TempSummaryStatistics statistics = seriesAnalysis.summaryStatistics;
+        assertEquals(0.54, statistics.getAvgTemp, 0.00001);
+        assertEquals(5.88455, statistics.getDevTemp, 0.00001);
+        assertEquals(-6.8, statistics.getMinTemp, 0.00001);
+        assertEquals(-3.8, statistics.getMaxTemp, 0.00001);
+        
+    }
+
 }

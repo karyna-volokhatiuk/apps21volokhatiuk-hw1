@@ -4,11 +4,11 @@ import lombok.Getter;
 
 @Getter
 public class TemperatureSeriesAnalysis {
+    static final int MIN_TEMP = -273;
+
     private double[] temperatureSeries;
     private int size;
     private int capacity;
-
-    static final int MIN_TEMP = -273;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries  = new double[]{};
@@ -40,7 +40,7 @@ public class TemperatureSeriesAnalysis {
         double average = average();
         double sumOfPows = 0;
         for (double temp : temperatureSeries) {
-            sumOfPows += Math.pow((temp-average), 2);
+            sumOfPows += (temp-average) * (temp-average);
         }
 
         if (sumOfPows == 0.0) {
@@ -89,9 +89,11 @@ public class TemperatureSeriesAnalysis {
 
         double closestToValue = temperatureSeries[0];
         for (double temp : temperatureSeries) {
-            if (Math.abs(temp - tempValue) < Math.abs(closestToValue - tempValue)) {
+            if (Math.abs(temp - tempValue) <
+                    Math.abs(closestToValue - tempValue)) {
                 closestToValue = temp;
-            } else if (Math.abs(temp - tempValue) == Math.abs(closestToValue - tempValue)) {
+            } else if (Math.abs(temp - tempValue)
+                    == Math.abs(closestToValue - tempValue)) {
                 if (temp > 0) {
                     closestToValue = temp;
                 }
