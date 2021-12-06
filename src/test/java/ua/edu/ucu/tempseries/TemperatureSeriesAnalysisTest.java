@@ -372,6 +372,16 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(8, seriesAnalysis.getCapacity());
     }
 
+    @Test
+    public void testAddTempsWithoutDoingArrBigger() {
+        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        seriesAnalysis.addTemps(2.0, 3.0)
+
+        assertEquals(8, seriesAnalysis.addTemps(2.0, 3.0));
+        assertEquals(8, seriesAnalysis.getCapacity());
+    }
+    
     @Test(expected = IllegalArgumentException.class)
     public void testsummaryStatisticsWithEmptyArray() {
         double[] temperatureSeries = {};
@@ -393,6 +403,17 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(-6.8, statistics.getMinTemp(), 0.00001);
         assertEquals(7.3, statistics.getMaxTemp(), 0.00001);
 
+    }
+    
+    @Test
+    public void testGetTemperatureSeries()() {
+        double[] temperatureSeries = {1.0, 5.0, 7.3, -6.8, -3.8};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // expect exception here
+        TempSummaryStatistics statistics = seriesAnalysis.summaryStatistics();
+        assertEquals(1.0, statistics.getTemperatureSeries()[0], 0.00001);
+        
     }
 
 }
