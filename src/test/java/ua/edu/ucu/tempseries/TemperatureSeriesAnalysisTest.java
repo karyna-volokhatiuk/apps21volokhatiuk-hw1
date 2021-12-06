@@ -406,14 +406,13 @@ public class TemperatureSeriesAnalysisTest {
     }
     
     @Test
-    public void testGetTemperatureSeries()() {
+    public void testGetTemperatureSeries() {
         double[] temperatureSeries = {1.0, 5.0, 7.3, -6.8, -3.8};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
         // expect exception here
-        TempSummaryStatistics statistics = seriesAnalysis.summaryStatistics();
-        assertEquals(1.0, statistics.getTemperatureSeries()[0], 0.00001);
-        
+        assertEquals(1.0, seriesAnalysis.getTemperatureSeries()[0], 0.00001);
+
     }
 
 }
