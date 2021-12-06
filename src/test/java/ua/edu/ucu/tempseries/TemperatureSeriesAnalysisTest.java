@@ -376,7 +376,7 @@ public class TemperatureSeriesAnalysisTest {
     public void testAddTempsWithoutDoingArrBigger() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        seriesAnalysis.addTemps(2.0, 3.0)
+        seriesAnalysis.addTemps(2.0, 3.0);
 
         assertEquals(8, seriesAnalysis.addTemps(2.0, 3.0));
         assertEquals(8, seriesAnalysis.getCapacity());
